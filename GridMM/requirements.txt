@@ -1,0 +1,13 @@
+jsonlines==2.0.0
+tqdm==4.62.0
+easydict==1.9
+Shapely==1.7.1
+h5py==2.10.0
+torch==2.1.0
+networkx==2.5.1
+numpy==1.20.3
+tensorboardX==2.6.2.2
+transformers==4.12.5
+pillow==8.4.0
+progressbar2
+h5py

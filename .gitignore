@@ -1,0 +1,16 @@
+data
+datasets
+checkpoints
+.idea
+.vscode
+
+*.egg-info
+*build
+*build_local
+*/__pycache__
+*.hydra
+*.pyc
+*.mat
+*.ckpt
+*.so
+
