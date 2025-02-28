@@ -13,4 +13,5 @@ checkpoints
 *.mat
 *.ckpt
 *.so
+*.pth
 
