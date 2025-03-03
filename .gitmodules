@@ -1,0 +1,3 @@
+[submodule "NavRAG"]
+	path = NavRAG
+	url = https://github.com/MrZihan/NavRAG.git

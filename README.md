@@ -4,7 +4,8 @@
 
 - 选择原则
   - 尽量不用端到端形态的seq-to-seq
-  - 优先gpt-based。或解释性强的另一种形态：场景理解map构建，作为认知input。即选择vl-gpt with/without map builder的工作
+  - 优先gpt(vllm)-based，gpt作为agent使用。
+  - 考虑解释性强的另一种形态：场景理解map构建，作为认知input。即优选vl-gpt with representative_map_builder的工作
   - zero-shot+fine-tuned > zero-shot > pretrained
   - 尽量模块化，代码解释性强
   - 三方/小众库依赖尽量少
@@ -45,6 +46,17 @@
 
 - 拓扑图和度量图（Topo-Metric）思想借鉴
 - 对于地图的特征input的transformer encoder感觉不如GridMM精致，可解释性差点
+
+## NavRAG（属数据增强工作，但值得借鉴）
+- Demand-Driven任务的数据增强指令生成方向最新工作
+- 需求导向VLN任务要求对场景的深刻认识，所以亮点是构建了地图的新形态：Hierarchical Scene Description Tree。虽然作用是生成泛化性强的数据集，但也是非常值得借鉴的地图形态，和人对场景的理解方式很接近了
+- 用Gpt生成视图、视点、区域和整个场景的分层场景描述，描述了不同级别的环境语义和空间关系，有助于LLM理解3D环境并检索用于指令生成的信息。
+- todo：数据集暂无法获取TeraBox is not available in current area
+- 源码还在更新，先submodule引入
+
+## 关注的待开源工作
+- Mem2Ego: https://arxiv.org/pdf/2502.14254
+- MapNav: https://arxiv.org/pdf/2502.13451
 
 ## Prospect
 [notations.md](overview/notations.md)
