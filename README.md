@@ -31,6 +31,11 @@
 - 开放词汇的语义地图，为减少原开放词汇所必须的特征embedding内存占用大，采用数千个语义类别来替代隐式embedding，覆盖语义广，并且是多标签标注，可至少平替现sota隐式预训练VLM语义
 - 使用recognize-anything++，CLIP/BLIP的上位替代
 
+## VLMaps
+
+- 基于CLIP，地图形态算是TagMap的下位替代，但提供了导航controller级的指令输出，较完整的先验地图VLN框架
+- 一个depth-free，仅基于稀疏重建的移植改动：[spase_vln](https://github.com/xyyandhtl/sparse-vln)
+
 ## GridMM (no gpt-based, map-based)
 
 - 虽还是seq-to-seq，但维护了grid map，有一定解释性，并且地图特征的encoder处理进一步增加了解释性

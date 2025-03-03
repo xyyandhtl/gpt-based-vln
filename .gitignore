@@ -6,6 +6,7 @@ data
 *build
 *build_local
 */__pycache__
+*outputs
 *.hydra
 *.pyc
 *.mat
