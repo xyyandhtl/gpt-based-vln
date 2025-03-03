@@ -2,8 +2,8 @@
 记录解释性强的、综合易移植性和可调试性的基于VL-LLM的视觉语言导航工作
 
 - 选择原则
-  - 尽量不用原始端到端形态的seq-to-seq
-  - 优先gpt-based，或解释性强的另一种形态，实时map构建和作为认知input。gpt+map最佳。
+  - 尽量不用端到端形态的seq-to-seq
+  - 优先gpt-based。或解释性强的另一种形态：场景理解map构建，作为认知input。即选择vl-gpt with/without map builder的工作
   - zero-shot+fine-tuned > zero-shot > pretrained
   - 尽量模块化，代码解释性强
   - 三方依赖尽量少

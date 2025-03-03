@@ -1,3 +1,5 @@
+# 基于各项工作亮点的改进方向
+
 ## InstructNav
   - Value map聚合逻辑
   - Gpt prompt定制优化
@@ -14,10 +16,7 @@
   - （同InstructNav）实例模块（检测、分割、追踪、是否动态物）的封装和定制化
 
 ## Sim2Real
-  - rgbd对齐误差
-  - lidar噪声
-  - 定位噪声
-  - segmentor噪声
+  - rgbd对齐误差、lidar噪声、定位噪声、segmentor噪声的影响消除
   - 动态物处理
 
 ## System impl
