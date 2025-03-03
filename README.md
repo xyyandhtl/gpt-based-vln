@@ -1,12 +1,13 @@
 # gpt-based-vln
-记录解释性强的、综合易移植性和可调试性的基于VL-LLM的视觉语言导航工作
+记录解释性强的、综合易移植性和可调试性的基于VL-LLM的视觉语言导航工作。
+代码整合，gpt-api调用统一，统一python环境关键依赖库及版本整理，Tips备忘记录。
 
 - 选择原则
   - 尽量不用端到端形态的seq-to-seq
   - 优先gpt-based。或解释性强的另一种形态：场景理解map构建，作为认知input。即选择vl-gpt with/without map builder的工作
   - zero-shot+fine-tuned > zero-shot > pretrained
   - 尽量模块化，代码解释性强
-  - 三方依赖尽量少
+  - 三方/小众库依赖尽量少
 
 ## InstructNav
 
@@ -25,7 +26,10 @@
 
 ## TagMap
 
-- todo
+- 不同于上面vln输出为planner甚至controller级别的指令，只输出objnav的目标坐标，是一个不完整的navigation框架
+- 预建语义地图，不是未知区域探索，但地图形态可借览
+- 开放词汇的语义地图，为减少原开放词汇所必须的特征embedding内存占用大，采用数千个语义类别来替代隐式embedding，覆盖语义广，并且是多标签标注，可至少平替现sota隐式预训练VLM语义
+- 使用recognize-anything++，CLIP/BLIP的上位替代
 
 ## GridMM (no gpt-based, map-based)
 

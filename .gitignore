@@ -1,6 +1,4 @@
 data
-datasets
-checkpoints
 .idea
 .vscode
 
@@ -15,5 +13,20 @@ checkpoints
 *.so
 *.pth
 
-*.pdf
+overview/papers
 
+# datasets structure
+datasets/macros.env
+datasets/habitat_task
+datasets/R2R
+datasets/R2R_VLNCE_v1-3
+datasets/REVERIE
+datasets/RXR
+datasets/SOON
+datasets/scenes/mp3d
+datasets/demo_data
+
+# checkpoints structure
+checkpoints/bert-base-uncased
+checkpoints/GridMM
+checkpoints/PixelNavigation
