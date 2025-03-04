@@ -5,8 +5,10 @@ from habitat.config.default_structured_configs import (
     FogOfWarConfig,
     TopDownMapMeasurementConfig,
 )
-DATASET_ROOT = '/home/lingkun/Documents/vlm/datasets'
-HABITAT_LAB_PATH = '/home/lingkun/Documents/vlm/habitat-lab/'
+
+
+DATASET_ROOT = '../datasets'
+HABITAT_LAB_PATH = '../../habitat-lab/'
 HM3D_CONFIG_PATH = f"{HABITAT_LAB_PATH}/habitat-lab/habitat/config/benchmark/nav/objectnav/objectnav_hm3d.yaml"
 MP3D_CONFIG_PATH = f"{HABITAT_LAB_PATH}/habitat-lab/habitat/config/benchmark/nav/objectnav/objectnav_mp3d.yaml"
 R2R_CONFIG_PATH = f"{HABITAT_LAB_PATH}/habitat-lab/habitat/config/benchmark/nav/vln_r2r.yaml"

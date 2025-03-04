@@ -1,12 +1,12 @@
 import os
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 
 import numpy as np
 import open3d as o3d
 
 import matplotlib.pyplot as plt
-import ipywidgets as widgets
-from IPython.display import display
+# import ipywidgets as widgets
+# from IPython.display import display
 
 from tag_mapping.datasets.matterport import (
     read_matterport_image_file,
@@ -54,7 +54,7 @@ intrinsics = {
 # Set ram_pretrained_path to the path of the downloaded the image tagging model checkpoint.
 # checkpoint.
 
-ram_pretrained_path = 'ram_swin_large_14m.pth'
+ram_pretrained_path = '../checkpoints/ram_swin_large_14m.pth'
 
 ram_tagger = RAMTagger(
     config={
@@ -105,6 +105,7 @@ for image_filename in tqdm(os.listdir(images_dir)):
     filename_bridge = MatterportFilenameBridge.from_image_filename(image_filename)
     depth_filename = filename_bridge.depth_filename
     pose_filename = filename_bridge.pose_filename
+    # print(f'processing {image_filename}, {depth_filename}, {pose_filename}')
 
     image = read_matterport_image_file(os.path.join(images_dir, image_filename))
     depth, depth_image = read_matterport_depth_file(os.path.join(depths_dir, depth_filename))
@@ -141,6 +142,7 @@ for image_filename in tqdm(os.listdir(images_dir)):
         }
     )
     tag_map.add_entry(entry)
+    # print(f'added entry for {image_filename}')
 
     # add information on the tags of the viewpoint
     for tag, conf in zip(tags, confidences):
@@ -154,6 +156,7 @@ for image_filename in tqdm(os.listdir(images_dir)):
                 'confidence': conf,
             }
         )
+    print(f'added {len(tags)} tags for {image_filename}')
 
 # Inspect the Tag Map
 # A tag in recognized in the scene can be selected for visualization. The tags are listed in a dropdown along with how many viewpoints that tag was recognized in.
@@ -162,14 +165,16 @@ for tag in sorted(tag_map.unique_objects):
     options.append(
         (tag + '  (' + str(len(tag_map.query(tag))) + ')', tag)
     )
+print('options:', options)
 
-query_dropdown = widgets.Dropdown(options=options, description='Select a tag:')
-display(query_dropdown)
+# query_dropdown = widgets.Dropdown(options=options, description='Select a tag:')
+# display(query_dropdown)
 
 # Retrieve corresponding viewpoints for the selected tag.
 #
 # Rerun this block after changing the selection
-query_entries = tag_map.query(query_dropdown.value)
+# query_entries = tag_map.query(query_dropdown.value)
+query_entries = tag_map.query('bed')
 
 # Show the images for a few of the viewpoints corresponding to the tag
 max_show = 6

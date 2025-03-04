@@ -76,6 +76,8 @@ class Instruct_Mapper:
                 self.navigable_pcd = gpu_merge_pointcloud(self.navigable_pcd,entity['pcd'])
         # geometry 
         current_navigable_point = self.current_pcd.select_by_index((self.current_pcd.point.positions[:,2]<self.floor_height).nonzero()[0])
+        if current_navigable_point.point.positions.shape[0] == 0:
+            return
         current_navigable_position = current_navigable_point.point.positions.cpu().numpy()
         standing_position = np.array([self.current_position[0],self.current_position[1],current_navigable_position[:,2].mean()])
         interpolate_points = np.linspace(np.ones_like(current_navigable_position)*standing_position,current_navigable_position,25).reshape(-1,3)

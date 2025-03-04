@@ -10,6 +10,8 @@ from objnav_agent import HM3D_Objnav_Agent
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 os.environ["MAGNUM_LOG"] = "quiet"
 os.environ["HABITAT_SIM_LOG"] = "quiet"
+
+
 def write_metrics(metrics,path="objnav_hm3d.csv"):
     with open(path, mode="w", newline="") as csv_file:
         fieldnames = metrics[0].keys()
@@ -27,7 +29,7 @@ def get_args():
 
 if __name__ == "__main__":
     args = get_args()
-    habitat_config = r2r_config(stage='val_unseen',episodes=args.eval_episodes)
+    habitat_config = mp3d_config(stage='val',episodes=args.eval_episodes)
     habitat_env = habitat.Env(habitat_config)
     habitat_mapper = Instruct_Mapper(habitat_camera_intrinsic(habitat_config),
                                     pcd_resolution=args.mapper_resolution,
@@ -45,4 +47,4 @@ if __name__ == "__main__":
                                 'spl':habitat_agent.metrics['spl'],
                                 'distance_to_goal':habitat_agent.metrics['distance_to_goal'],
                                 'object_goal':habitat_agent.instruct_goal})
-        write_metrics(evaluation_metrics)
+    write_metrics(evaluation_metrics)

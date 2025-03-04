@@ -6,8 +6,8 @@ import open3d as o3d
 import matplotlib.pyplot as plt
 from matplotlib import cm
 
-import ipywidgets as widgets
-# from IPython.display import display
+# import ipywidgets as widgets
+# # from IPython.display import display
 
 from tag_mapping.datasets.matterport import (
     read_matterport_image_file,
@@ -24,7 +24,7 @@ from tag_mapping.utils import box_to_linemesh
 # Load scene data
 # Please first download the demo data by running download_demo_data.sh.
 
-scene_dir = 'demo_data'
+scene_dir = '../datasets/demo_data'
 tag_map = TagMap.load(f'{scene_dir}/scene.tagmap')
 intrinsics = tag_map.metadata["intrinsics"]
 images_dir = os.path.join(scene_dir, 'color')
@@ -39,13 +39,14 @@ o3d.visualization.draw_geometries([scene_mesh])
 # Localize a selected tag
 # Select a tag recognized in the scene to localize
 options = sorted(list(tag_map.unique_objects))
-query_dropdown = widgets.Dropdown(options=options, description='Select an tag:')
+print(f'options:', options)
+# query_dropdown = widgets.Dropdown(options=options, description='Select an tag:')
 # display(query_dropdown)
 
 # Retrieve corresponding viewpoints for the selected tag.
 #
 # Rerun this block after changing the selection
-query_entries = tag_map.query(query_dropdown.value)
+query_entries = tag_map.query('bed')
 
 # Show the images for a few of the viewpoints corresponding to the tag
 max_show = 6
